@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 Med Spa AI Visibility Report | Outer Intel</title>
-  <meta name="description" content="Download the 2026 Med Spa AI Visibility Benchmark Report. 21,489 reviews, 131 independent practices, 12 US cities. Free.">
+  <title>Outer Intel | Competitive Intelligence for Med Spas</title>
+  <meta name="description" content="Outer Intel delivers competitive reputation intelligence for independent med spa owners. See exactly where your practice stands versus the top competitors in your market.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,20 +42,26 @@
       --font-mono:    'IBM Plex Mono', monospace;
 
       --max-width: 1100px;
+      --section-pad-v: 88px;
+      --section-pad-v-mobile: 56px;
     }
 
     /* =========================================
        RESET & BASE
     ========================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: var(--font-body);
-      background: var(--color-midnight);
+      background: var(--color-cloud);
       color: var(--text-primary);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
+    img { max-width: 100%; display: block; }
     a { text-decoration: none; }
 
     /* =========================================
@@ -92,6 +98,23 @@
     /* =========================================
        BUTTONS
     ========================================= */
+    .btn-primary {
+      background: var(--color-midnight);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: 5px;
+      letter-spacing: 0.02em;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
     .btn-primary-dark {
       background: var(--color-electric);
       color: var(--color-white);
@@ -109,6 +132,22 @@
     }
     .btn-primary-dark:hover { opacity: 0.88; transform: translateY(-1px); }
 
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 12px 22px;
+      border-radius: 5px;
+      border: 1px solid var(--ghost-border);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+    .btn-ghost:hover { background: rgba(15,28,63,0.04); }
+
     .btn-ghost-dark {
       background: transparent;
       color: var(--text-on-dark);
@@ -121,7 +160,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      transition: background 0.18s ease;
+      transition: background 0.18s ease, border-color 0.18s ease;
     }
     .btn-ghost-dark:hover { background: rgba(238,241,248,0.07); }
 
@@ -142,6 +181,16 @@
       color: var(--color-electric);
       border: 1px solid var(--electric-border);
     }
+    .badge-positive {
+      background: var(--emerald-dim);
+      color: var(--color-emerald);
+      border: 1px solid var(--emerald-border);
+    }
+    .badge-negative {
+      background: var(--coral-dim);
+      color: var(--color-coral);
+      border: 1px solid var(--coral-border);
+    }
 
     /* =========================================
        CALLOUT BOXES
@@ -153,6 +202,8 @@
       margin: 24px 0;
     }
     .callout-negative { background: var(--coral-dim); border-color: var(--color-coral); }
+    .callout-positive { background: var(--emerald-dim); border-color: var(--color-emerald); }
+    .callout-info { background: var(--electric-dim); border-color: var(--color-electric); }
     .callout-title {
       font-family: var(--font-body);
       font-size: 13px;
@@ -160,6 +211,8 @@
       margin-bottom: 4px;
     }
     .callout-negative .callout-title { color: var(--color-coral); }
+    .callout-positive .callout-title { color: var(--color-emerald); }
+    .callout-info .callout-title { color: var(--color-electric); }
     .callout-body {
       font-size: 13px;
       color: var(--text-secondary);
@@ -173,13 +226,14 @@
       font-family: var(--font-display);
       font-size: 17px;
       font-weight: 700;
+      color: var(--text-primary);
       letter-spacing: -0.01em;
     }
-    .logo-on-dark { color: var(--text-on-dark); }
-    .logo-on-dark em {
+    .logo em {
       font-style: normal;
       color: var(--color-electric);
     }
+    .logo-dark { color: var(--text-on-dark); }
 
     /* =========================================
        LAYOUT
@@ -189,132 +243,519 @@
       margin: 0 auto;
       padding: 0 32px;
     }
-    @media (max-width: 600px) { .container { padding: 0 20px; } }
-
-    /* =========================================
-       MINIMAL NAV
-    ========================================= */
-    .nav-minimal {
-      background: var(--color-midnight);
-      border-bottom: 1px solid rgba(107,155,245,0.15);
-      padding: 20px 32px;
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
     }
-    @media (max-width: 600px) { .nav-minimal { padding: 20px; } }
 
     /* =========================================
-       HERO (DARK)
+       NAVIGATION
     ========================================= */
-    .hero {
-      background: var(--color-midnight);
-      min-height: 90vh;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-cloud);
+      border-bottom: 1px solid var(--color-mist);
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 32px;
       display: flex;
       align-items: center;
-      padding: 80px 0;
+      justify-content: space-between;
+    }
+    @media (max-width: 600px) {
+      .nav-inner { padding: 16px 20px; }
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      background: var(--color-cloud);
+      padding: var(--section-pad-v) 0;
       position: relative;
       overflow: hidden;
     }
-    /* Large ghosted number */
-    .hero::after {
-      content: '131';
+    /* Dot grid */
+    .hero::before {
+      content: '';
       position: absolute;
-      right: -40px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-display);
-      font-size: 320px;
-      font-weight: 900;
-      color: rgba(107,155,245,0.04);
+      inset: 0;
+      background-image: radial-gradient(circle, var(--color-mist) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.6;
       pointer-events: none;
-      user-select: none;
-      line-height: 1;
     }
     .hero-inner {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
       position: relative;
       z-index: 1;
-      max-width: 760px;
     }
+    .hero-content { max-width: 600px; }
+
     .hero-headline {
       font-family: var(--font-display);
-      font-size: 56px;
+      font-size: 52px;
       font-weight: 900;
-      line-height: 1.06;
-      color: var(--text-on-dark);
+      line-height: 1.08;
+      color: var(--text-primary);
       margin-bottom: 22px;
-      letter-spacing: -0.025em;
-    }
-    .hero-sub {
-      font-family: var(--font-body);
-      font-size: 17px;
-      color: rgba(238,241,248,0.70);
-      max-width: 540px;
-      line-height: 1.6;
-      margin-bottom: 36px;
+      letter-spacing: -0.02em;
     }
 
-    /* Stat trio */
-    .hero-stats {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      margin-bottom: 40px;
-      border: 1px solid rgba(107,155,245,0.15);
-      border-radius: 8px;
-      overflow: hidden;
-      max-width: 540px;
-    }
-    .hero-stat {
-      flex: 1;
-      padding: 18px 20px;
-      border-right: 1px solid rgba(107,155,245,0.15);
-    }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-num {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--color-sky);
-      display: block;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .hero-stat-label {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      color: rgba(238,241,248,0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.4;
-      display: block;
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 34px;
     }
 
     .hero-cta-group { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
     .hero-cta-note {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: rgba(238,241,248,0.35);
-      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+    }
+
+    /* Report Cover Card */
+    .report-card {
+      background: var(--color-midnight);
+      border-radius: 10px;
+      padding: 28px 32px;
+      box-shadow: 0 20px 60px rgba(15,28,63,0.22), 0 4px 16px rgba(15,28,63,0.12);
+      min-width: 240px;
+      flex-shrink: 0;
+      animation: cardFloat 4s ease-in-out infinite;
+    }
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .report-card-brand {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(238,241,248,0.45);
+      margin-bottom: 12px;
+    }
+    .report-card-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-on-dark);
+      line-height: 1.4;
+      margin-bottom: 22px;
+    }
+    .report-card-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(107,155,245,0.15);
+      margin-bottom: 20px;
+    }
+    .report-card-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .report-card-stat-num {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-sky);
+      display: block;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .report-card-stat-label {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      color: rgba(238,241,248,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+      display: block;
     }
 
     @media (max-width: 900px) {
-      .hero-headline { font-size: 40px; }
-      .hero::after { font-size: 200px; right: -20px; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-headline { font-size: 36px; }
+      .report-card { display: none; }
     }
     @media (max-width: 600px) {
-      .hero { min-height: auto; padding: 64px 0; }
+      .hero { padding: var(--section-pad-v-mobile) 0; }
       .hero-inner { padding: 0 20px; }
       .hero-headline { font-size: 32px; }
-      .hero-sub { font-size: 15px; }
-      .hero-stats { flex-direction: column; }
-      .hero-stat { border-right: none; border-bottom: 1px solid rgba(107,155,245,0.15); }
-      .hero-stat:last-child { border-bottom: none; }
-      .hero::after { display: none; }
     }
 
     /* =========================================
-       ANIMATIONS
+       STATS STRIP
+    ========================================= */
+    .stats-strip {
+      background: var(--color-midnight);
+      padding: 56px 0;
+    }
+    .stats-strip-header {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: rgba(238,241,248,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 0;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .stats-divider {
+      background: rgba(107,155,245,0.15);
+      width: 1px;
+      align-self: stretch;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0 32px;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--color-sky);
+      line-height: 1;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(238,241,248,0.45);
+      max-width: 160px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 0;
+      }
+      .stats-divider { display: none; }
+      .stat-item {
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(107,155,245,0.15);
+      }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    /* =========================================
+       WHAT WE DO
+    ========================================= */
+    .what-we-do {
+      background: var(--color-cloud);
+      padding: var(--section-pad-v) 0;
+    }
+    .what-we-do-card {
+      background: var(--color-white);
+      border-radius: 12px;
+      border: 1px solid var(--color-mist);
+      box-shadow: 0 2px 16px rgba(15,28,63,0.06), 0 1px 4px rgba(15,28,63,0.04);
+      padding: 48px 52px;
+      max-width: 720px;
+    }
+    .what-we-do-headline {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+    .what-we-do-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .what-we-do-card { padding: 32px 28px; }
+      .what-we-do-headline { font-size: 22px; }
+    }
+    @media (max-width: 600px) {
+      .what-we-do { padding: var(--section-pad-v-mobile) 0; }
+    }
+
+    /* =========================================
+       REPORT SECTION
+    ========================================= */
+    .report-section {
+      background: var(--color-cloud);
+      padding: var(--section-pad-v) 0;
+      border-top: 1px solid var(--color-mist);
+    }
+    .report-headline {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .report-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 44px;
+      line-height: 1.55;
+    }
+    .report-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .report-description {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .report-facts { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .report-fact {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .report-fact-marker {
+      font-family: var(--font-mono);
+      color: var(--color-electric);
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--color-white);
+      border-radius: 10px;
+      border: 1px solid var(--color-mist);
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(15,28,63,0.07);
+    }
+    .form-card-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-electric);
+      display: block;
+      margin-bottom: 18px;
+    }
+    .form-note {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .report-grid { grid-template-columns: 1fr; }
+      .report-headline { font-size: 28px; }
+    }
+    @media (max-width: 600px) {
+      .report-section { padding: var(--section-pad-v-mobile) 0; }
+      .report-headline { font-size: 24px; }
+    }
+
+    /* =========================================
+       THE 5 GAPS
+    ========================================= */
+    .gaps-section {
+      background: var(--color-cloud);
+      padding: var(--section-pad-v) 0;
+      border-top: 1px solid var(--color-mist);
+    }
+    .gaps-headline {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .gaps-intro {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+
+    .gap-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-mist);
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin-bottom: 12px;
+      transition: box-shadow 0.2s ease;
+    }
+    .gap-card:hover {
+      box-shadow: 0 4px 20px rgba(15,28,63,0.08);
+    }
+    .gap-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-coral);
+      display: block;
+      margin-bottom: 7px;
+    }
+    .gap-title {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 9px;
+    }
+    .gap-body {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .gaps-section { padding: var(--section-pad-v-mobile) 0; }
+      .gaps-headline { font-size: 24px; }
+      .gap-card { padding: 18px 20px; }
+    }
+
+    /* =========================================
+       FINAL CTA
+    ========================================= */
+    .final-cta {
+      background: var(--color-midnight);
+      padding: var(--section-pad-v) 0;
+    }
+    .final-cta-headline {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--text-on-dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .final-cta-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: rgba(238,241,248,0.65);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .final-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .final-cta-note {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: rgba(238,241,248,0.3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .final-cta { padding: var(--section-pad-v-mobile) 0; }
+      .final-cta-headline { font-size: 26px; }
+      .final-cta-buttons { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    .footer {
+      background: var(--color-midnight);
+      border-top: 1px solid rgba(107,155,245,0.12);
+      padding: 28px 32px;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(238,241,248,0.4);
+    }
+    .footer-url {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(238,241,248,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 700px) {
+      .footer { padding: 28px 20px; }
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    /* =========================================
+       ANIMATIONS (staggered fade-in)
     ========================================= */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
@@ -326,234 +767,17 @@
     }
     .fade-in-1 { animation-delay: 0.05s; }
     .fade-in-2 { animation-delay: 0.15s; }
-    .fade-in-3 { animation-delay: 0.28s; }
-    .fade-in-4 { animation-delay: 0.40s; }
-    .fade-in-5 { animation-delay: 0.52s; }
+    .fade-in-3 { animation-delay: 0.26s; }
+    .fade-in-4 { animation-delay: 0.38s; }
+    .fade-in-5 { animation-delay: 0.50s; }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-in { animation: none; opacity: 1; }
-    }
-
-    /* =========================================
-       THE FINDING (light section)
-    ========================================= */
-    .finding-section {
-      background: var(--color-cloud);
-      padding: 88px 0;
-    }
-    .finding-headline {
-      font-family: var(--font-display);
-      font-size: 30px;
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--text-primary);
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-      max-width: 640px;
-    }
-    .finding-body {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 640px;
-      margin-bottom: 16px;
-    }
-
-    @media (max-width: 600px) {
-      .finding-section { padding: 56px 0; }
-      .finding-headline { font-size: 22px; }
-    }
-
-    /* =========================================
-       REPORT CONTENTS (white card)
-    ========================================= */
-    .contents-section {
-      background: var(--color-cloud);
-      padding: 88px 0;
-      border-top: 1px solid var(--color-mist);
-    }
-    .contents-headline {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--text-primary);
-      margin-bottom: 36px;
-      letter-spacing: -0.01em;
-      max-width: 600px;
-    }
-    .contents-card-wrap {
-      background: var(--color-white);
-      border-radius: 12px;
-      border: 1px solid var(--color-mist);
-      box-shadow: 0 2px 16px rgba(15,28,63,0.06);
-      padding: 40px 40px;
-    }
-    .contents-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px 40px;
-    }
-    .content-item {}
-    .content-num {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--color-coral);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .content-title {
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-    }
-    .content-desc {
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    @media (max-width: 700px) {
-      .contents-grid { grid-template-columns: 1fr; gap: 24px; }
-      .contents-card-wrap { padding: 28px 24px; }
-    }
-    @media (max-width: 600px) {
-      .contents-section { padding: 56px 0; }
-      .contents-headline { font-size: 20px; }
-    }
-
-    /* =========================================
-       FORM SECTION (dark)
-    ========================================= */
-    .form-section {
-      background: var(--color-midnight);
-      padding: 88px 0;
-    }
-    .form-section-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .form-headline {
-      font-family: var(--font-display);
-      font-size: 36px;
-      font-weight: 900;
-      color: var(--text-on-dark);
-      line-height: 1.1;
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-    }
-    .form-subtext {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: rgba(238,241,248,0.6);
-      margin-bottom: 36px;
-    }
-    .form-card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      padding: 32px;
-      border: 1px solid rgba(107,155,245,0.15);
-      width: 100%;
-      max-width: 480px;
-      text-align: left;
-    }
-    .form-note {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      color: rgba(238,241,248,0.3);
-      letter-spacing: 0.08em;
-      text-align: center;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 600px) {
-      .form-section { padding: 56px 0; }
-      .form-section-inner { padding: 0 20px; }
-      .form-headline { font-size: 26px; }
-    }
-
-    /* =========================================
-       REINFORCE SECTION (light)
-    ========================================= */
-    .reinforce-section {
-      background: var(--color-cloud);
-      padding: 64px 0;
-      border-top: 1px solid var(--color-mist);
-    }
-    .reinforce-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      max-width: 640px;
-    }
-    .reinforce-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .reinforce-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--color-emerald);
-      flex-shrink: 0;
-      margin-top: 5px;
-    }
-
-    @media (max-width: 600px) {
-      .reinforce-section { padding: 48px 0; }
-    }
-
-    /* =========================================
-       FOOTER (minimal)
-    ========================================= */
-    .footer {
-      background: var(--color-midnight);
-      border-top: 1px solid rgba(107,155,245,0.12);
-      padding: 24px 32px;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-url {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: rgba(238,241,248,0.3);
-      letter-spacing: 0.06em;
-    }
-
-    @media (max-width: 600px) {
-      .footer { padding: 24px 20px; }
-      .footer-inner {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
+      .fade-in, .report-card { animation: none; opacity: 1; }
     }
 
     /* Focus states */
     a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--color-sky);
+      outline: 2px solid var(--color-electric);
       outline-offset: 3px;
       border-radius: 4px;
     }
@@ -562,178 +786,238 @@
 <body>
 
   <!-- =========================================
-       MINIMAL NAV
+       NAVIGATION
   ========================================= -->
-  <nav class="nav-minimal" role="navigation" aria-label="Site navigation">
-    <div class="logo logo-on-dark" aria-label="Outer Intel">Outer<em>Intel</em></div>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="Outer Intel home">Outer<em>Intel</em></a>
+      <a href="#report" class="btn-primary">Get the Report &rarr;</a>
+    </div>
   </nav>
 
   <!-- =========================================
-       HERO (DARK)
+       HERO
   ========================================= -->
   <section class="hero" aria-labelledby="hero-headline">
     <div class="hero-inner">
-      <div class="eyebrow eyebrow-dark fade-in fade-in-1">2026 National Benchmark Report &middot; Med Spa AI Visibility</div>
-      <h1 class="hero-headline fade-in fade-in-2" id="hero-headline">
-        131 med spas. 21,489 reviews. One <em>uncomfortable</em> finding.
-      </h1>
-      <p class="hero-sub fade-in fade-in-3">
-        The businesses winning in AI search are not the ones with the best reviews or the best clinical outcomes. They are the ones with the most disciplined review infrastructure. This report shows exactly what that looks like and where the gaps are in your market.
-      </p>
-
-      <!-- Stat trio -->
-      <div class="hero-stats fade-in fade-in-4" role="group" aria-label="Key statistics from the report">
-        <div class="hero-stat">
-          <span class="hero-stat-num">69%</span>
-          <span class="hero-stat-label">of practices avg 4.9 stars or above</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">220</span>
-          <span class="hero-stat-label">review gap between top &amp; bottom</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">r&nbsp;=&nbsp;0.041</span>
-          <span class="hero-stat-label">response rate vs star rating</span>
+      <div class="hero-content">
+        <div class="eyebrow fade-in fade-in-1">Competitive Intelligence &middot; Med Spa</div>
+        <h1 class="hero-headline fade-in fade-in-2" id="hero-headline">
+          Your 4.9 stars mean <em>nothing</em> to the patient who just chose your competitor.
+        </h1>
+        <p class="hero-sub fade-in fade-in-3">
+          Outer Intel analyzes what your competitors' patients are saying versus what yours are saying and shows you exactly where the gap is and what's driving it.
+        </p>
+        <div class="hero-cta-group fade-in fade-in-4">
+          <a href="#report" class="btn-primary">Download the 2026 Benchmark Report</a>
+          <span class="hero-cta-note">Free &middot; PDF &middot; No call required</span>
         </div>
       </div>
 
-      <div class="hero-cta-group fade-in fade-in-5">
-        <a href="#guide-form" class="btn-primary-dark">Get the Report Free</a>
-        <span class="hero-cta-note">PDF &middot; No call required &middot; Instant delivery</span>
+      <!-- Report Cover Card -->
+      <div class="report-card fade-in fade-in-5" role="img" aria-label="2026 Med Spa AI Visibility Benchmark Report cover showing 21,489 reviews, 131 med spas, 12 cities, March 2026 data">
+        <div class="report-card-brand">Outer Intel</div>
+        <div class="report-card-title">2026 Med Spa AI Visibility<br>Benchmark Report</div>
+        <div class="report-card-divider"></div>
+        <div class="report-card-stats">
+          <div>
+            <span class="report-card-stat-num">21,489</span>
+            <span class="report-card-stat-label">Reviews</span>
+          </div>
+          <div>
+            <span class="report-card-stat-num">131</span>
+            <span class="report-card-stat-label">Med Spas</span>
+          </div>
+          <div>
+            <span class="report-card-stat-num">12</span>
+            <span class="report-card-stat-label">Cities</span>
+          </div>
+          <div>
+            <span class="report-card-stat-num" style="font-size:14px; padding-top:4px;">Mar 2026</span>
+            <span class="report-card-stat-label">Data Through</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================
-       THE UNCOMFORTABLE FINDING
+       DARK STATS STRIP
   ========================================= -->
-  <section class="finding-section" aria-labelledby="finding-headline">
+  <section class="stats-strip" aria-label="Key benchmark statistics">
     <div class="container">
-      <div class="eyebrow">The Finding</div>
-      <h2 class="finding-headline" id="finding-headline">
-        Stars are <em>table stakes</em>. The race has moved on.
+      <p class="stats-strip-header">From the 2026 National Benchmark Report &middot; 131 Med Spas &middot; 12 US Cities</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">69%</span>
+        <span class="stat-label">of independent med spas average 4.9 stars or higher</span>
+      </div>
+      <div class="stats-divider" role="separator"></div>
+      <div class="stat-item">
+        <span class="stat-number">220</span>
+        <span class="stat-label">review gap between top and bottom quartile nationally</span>
+      </div>
+      <div class="stats-divider" role="separator"></div>
+      <div class="stat-item">
+        <span class="stat-number">11</span>
+        <span class="stat-label">businesses in this study respond to 0% of their reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       WHAT WE DO
+  ========================================= -->
+  <section class="what-we-do" aria-labelledby="what-we-do-headline">
+    <div class="container">
+      <div class="what-we-do-card">
+        <div class="eyebrow">The Audit</div>
+        <h2 class="what-we-do-headline" id="what-we-do-headline">
+          Outside-in intelligence. No agency. No conflict of <em>interest</em>.
+        </h2>
+        <p class="what-we-do-body">
+          Outer Intel is not a reputation management tool and not a marketing agency. We collect and analyze what your competitors' patients are actually saying, score your practice against the top operators in your market across six measurable dimensions, and deliver a structured PDF report in 48 hours. You see exactly where the gap is. You decide what to do about it.
+        </p>
+        <div class="badges-row" role="list" aria-label="Service features">
+          <span class="badge badge-info" role="listitem">PDF Delivery</span>
+          <span class="badge badge-info" role="listitem">48-Hour Turnaround</span>
+          <span class="badge badge-info" role="listitem">No Call Required</span>
+          <span class="badge badge-info" role="listitem">Google Reviews Data</span>
+          <span class="badge badge-info" role="listitem">Competitive Intel. Not Reputation Mgmt</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       REPORT SECTION (EMAIL GATE)
+  ========================================= -->
+  <section class="report-section" id="report" aria-labelledby="report-headline">
+    <div class="container">
+      <div class="eyebrow">2026 National Benchmark Report</div>
+      <h2 class="report-headline" id="report-headline">
+        <em>21,489</em> reviews. 131 med spas. 12 cities.
       </h2>
-      <p class="finding-body">
-        Sixty-nine percent of independent med spas in the US average 4.9 stars or higher. The top quartile and the bottom quartile of this study are nearly identical on star rating (4.93 vs. 4.87), sentiment, and review specificity. They are dramatically different on one thing: whether the owner shows up to manage the practice's review record at all.
-      </p>
-      <p class="finding-body">
-        The businesses winning in AI search are not better practices. They are more operationally present ones. Zero businesses in the top quartile respond to 0% of their reviews. Seven businesses in the bottom quartile do. That is the finding.
-      </p>
+      <p class="report-sub">The largest independent analysis of med spa AI visibility ever published. Free to download.</p>
 
-      <div class="callout callout-negative">
-        <p class="callout-title">A business can rank in the top 20 nationally while its reputation is quietly deteriorating.</p>
-        <p class="callout-body">One business in this study holds a 4.5 star rating and ranks top 20 on composite AI Visibility Score. Its sentiment score is the lowest in the study at 6.1 out of 10, and its negative review rate is 12%, nearly six times the national mean of 2.1%. Star ratings mask what AI engines actually read.</p>
-      </div>
-    </div>
-  </section>
+      <div class="report-grid">
+        <!-- Left: Description -->
+        <div>
+          <p class="report-description">
+            This report documents what separates top-quartile med spa operators from the rest across review volume, velocity, owner response rate, and AI sentiment using data from 131 real independent practices in 12 US cities. It is the national baseline every Outer Intel audit references. Download it and you will know more about the competitive landscape in your market than almost any other operator does.
+          </p>
+          <ul class="report-facts" aria-label="Key findings">
+            <li class="report-fact">
+              <span class="report-fact-marker" aria-hidden="true">&rarr;</span>
+              <span>69% of med spas average 4.9 stars or higher. Stars are no longer a differentiator.</span>
+            </li>
+            <li class="report-fact">
+              <span class="report-fact-marker" aria-hidden="true">&rarr;</span>
+              <span>Top-quartile businesses have 220 more reviews than bottom-quartile ones</span>
+            </li>
+            <li class="report-fact">
+              <span class="report-fact-marker" aria-hidden="true">&rarr;</span>
+              <span>Response rate has essentially no relationship to how highly a business is rated (r&nbsp;=&nbsp;0.041)</span>
+            </li>
+          </ul>
+        </div>
 
-  <!-- =========================================
-       WHAT IS IN THE REPORT
-  ========================================= -->
-  <section class="contents-section" aria-labelledby="contents-headline">
-    <div class="container">
-      <div class="eyebrow">Report Contents</div>
-      <h2 class="contents-headline" id="contents-headline">
-        What 131 real med spas reveal about who gets found and who gets passed over.
-      </h2>
-
-      <div class="contents-card-wrap">
-        <div class="contents-grid" role="list" aria-label="Report sections">
-
-          <div class="content-item" role="listitem">
-            <span class="content-num">01</span>
-            <h3 class="content-title">National Benchmarks</h3>
-            <p class="content-desc">Review volume, velocity, star ratings, and response rates across 131 businesses. This is the baseline your practice is competing against.</p>
-          </div>
-
-          <div class="content-item" role="listitem">
-            <span class="content-num">02</span>
-            <h3 class="content-title">Top vs. Bottom Quartile</h3>
-            <p class="content-desc">What the 33 highest-visibility practices have in common that the 33 lowest-visibility ones don't. The answer is not what most owners expect.</p>
-          </div>
-
-          <div class="content-item" role="listitem">
-            <span class="content-num">03</span>
-            <h3 class="content-title">What AI Engines Actually Read</h3>
-            <p class="content-desc">How review content, staff names, and service mentions function as AI search signals and which ones matter most right now.</p>
-          </div>
-
-          <div class="content-item" role="listitem">
-            <span class="content-num">04</span>
-            <h3 class="content-title">Market-by-Market Breakdown</h3>
-            <p class="content-desc">City-level data for 12 US markets: Boston, Nashville, Atlanta, Denver, Dallas, Seattle, San Diego, Chicago, Scottsdale, Charlotte, Minneapolis, Kansas City.</p>
-          </div>
-
-          <div class="content-item" role="listitem">
-            <span class="content-num">05</span>
-            <h3 class="content-title">The 5 Gaps</h3>
-            <p class="content-desc">The five operational gaps appearing in every market, with national data quantifying each one.</p>
-          </div>
-
-          <div class="content-item" role="listitem">
-            <span class="content-num">06</span>
-            <h3 class="content-title">The AI Visibility Score</h3>
-            <p class="content-desc">The composite scoring model across six dimensions, with component weights and what moving each lever does to overall visibility.</p>
-          </div>
-
+        <!-- Right: Tally Form -->
+        <div class="form-card">
+          <span class="form-card-label">Get the Report Free</span>
+          <iframe
+            data-tally-src="https://tally.so/embed/5BLABQ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="400"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Download the Outer Intel Benchmark Report"
+          ></iframe>
+          <p class="form-note">No spam. One delivery email with your download link.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================
-       FORM SECTION
+       THE 5 GAPS
   ========================================= -->
-  <section class="form-section" id="guide-form" aria-labelledby="form-headline">
-    <div class="form-section-inner">
-      <div class="eyebrow eyebrow-dark" style="justify-content: center;">Download Free</div>
-      <h2 class="form-headline" id="form-headline">Get the 2026 Med Spa AI Visibility Report.</h2>
-      <p class="form-subtext">Free. Delivered instantly. No call, no pitch.</p>
+  <section class="gaps-section" aria-labelledby="gaps-headline">
+    <div class="container">
+      <div class="eyebrow">What The Data Shows</div>
+      <h2 class="gaps-headline" id="gaps-headline">
+        The same five gaps appear in <em>every</em> market.
+      </h2>
+      <p class="gaps-intro">
+        Outer Intel analyzed 131 independent med spas across 12 US cities. The businesses falling behind on AI visibility share the same patterns regardless of city size, market maturity, or clinical quality. These are the gaps.
+      </p>
 
-      <div class="form-card">
-        <iframe
-          data-tally-src="https://tally.so/embed/5BLABQ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-          loading="lazy"
-          width="100%"
-          height="400"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          title="Download the Outer Intel Benchmark Report"
-        ></iframe>
-        <p class="form-note">No spam. One email with your download link. Unsubscribe anytime.</p>
+      <div role="list" aria-label="The five competitive gaps">
+
+        <article class="gap-card" role="listitem">
+          <span class="gap-label">Gap 01</span>
+          <h3 class="gap-title">No Systematic Review Collection Process</h3>
+          <p class="gap-body">Most operators earn reviews when patients remember to leave them. Top-quartile businesses earn 9.82 reviews per month on average. Bottom-quartile businesses earn 2.38. That gap compounds to nearly 90 additional reviews per year and the businesses at the bottom are not just behind today, they are receding.</p>
+        </article>
+
+        <article class="gap-card" role="listitem">
+          <span class="gap-label">Gap 02</span>
+          <h3 class="gap-title">Owner Responses Are Being Skipped</h3>
+          <p class="gap-body">Twenty percent of businesses in this study respond to fewer than 10% of their reviews. Owner responses are indexed content. Every response adds the operator's voice, contributes keyword context, and signals to AI systems that the business is actively managed. Eleven businesses respond to 0%.</p>
+        </article>
+
+        <article class="gap-card" role="listitem">
+          <span class="gap-label">Gap 03</span>
+          <h3 class="gap-title">Negative Reviews Sit Unanswered</h3>
+          <p class="gap-body">Sixteen businesses in this study respond to 0% of their negative reviews. A one-star review with no owner response sits in the public record as the final word. It does not disappear because the business ignores it.</p>
+        </article>
+
+        <article class="gap-card" role="listitem">
+          <span class="gap-label">Gap 04</span>
+          <h3 class="gap-title">Reviews Are Too Generic to Signal Anything</h3>
+          <p class="gap-body">Only 38.7% of reviews name a specific service and only 29.4% describe a concrete outcome. "Great experience, highly recommend" does not answer "who does the best Botox in Dallas?" A review that names the practitioner, the treatment, and the result does.</p>
+        </article>
+
+        <article class="gap-card" role="listitem">
+          <span class="gap-label">Gap 05</span>
+          <h3 class="gap-title">No Competitive Baseline Exists</h3>
+          <p class="gap-body">Most owners know their own rating. Almost none have a structured picture of where they rank on velocity, response rate, and AI sentiment relative to the top businesses in their market. You cannot close gaps you cannot see.</p>
+        </article>
+
       </div>
     </div>
   </section>
 
   <!-- =========================================
-       REINFORCE
+       FINAL CTA
   ========================================= -->
-  <section class="reinforce-section" aria-label="Why this report is worth downloading">
+  <section class="final-cta" aria-labelledby="final-cta-headline">
     <div class="container">
-      <ul class="reinforce-list">
-        <li class="reinforce-item">
-          <span class="reinforce-dot" aria-hidden="true"></span>
-          <span>The data is real: 21,489 actual Google reviews from 131 independent practices.</span>
-        </li>
-        <li class="reinforce-item">
-          <span class="reinforce-dot" aria-hidden="true"></span>
-          <span>The methodology is transparent: all findings independently verified against source data.</span>
-        </li>
-        <li class="reinforce-item">
-          <span class="reinforce-dot" aria-hidden="true"></span>
-          <span>The report is free: no trial, no upsell, no agenda behind the download.</span>
-        </li>
-      </ul>
+      <div class="eyebrow eyebrow-dark">Get Started</div>
+      <h2 class="final-cta-headline" id="final-cta-headline">
+        See where your practice <em>actually</em> stands.
+      </h2>
+      <p class="final-cta-body">
+        Download the 2026 Benchmark Report and you will have the national data. Request a market snapshot and we will show you where your specific practice ranks against the top competitors in your city.
+      </p>
+      <div class="final-cta-buttons">
+        <a href="#report" class="btn-primary-dark">Download the Report</a>
+        <a href="https://tally.so/r/5BLABQ" class="btn-ghost-dark" target="_blank" rel="noopener noreferrer">Request a Market Snapshot</a>
+      </div>
+      <p class="final-cta-note">No call required &middot; Async &middot; Delivered in 48 hours</p>
     </div>
   </section>
 
   <!-- =========================================
-       MINIMAL FOOTER
+       FOOTER
   ========================================= -->
   <footer class="footer" role="contentinfo">
     <div class="footer-inner">
-      <div class="logo logo-on-dark">Outer<em>Intel</em></div>
+      <div class="logo logo-dark">Outer<em>Intel</em></div>
+      <p class="footer-tagline">What patients say when you're not in the room.</p>
       <span class="footer-url">outerintel.com</span>
     </div>
   </footer>
