@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 Med Spa AI Visibility Benchmark · Outer Intel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --color-cloud: #F8F9FC;
+  --color-mist: #E2E6F0;
+  --color-midnight: #0F1C3F;
+  --color-electric: #2F5FD4;
+  --color-sky: #6B9BF5;
+  --color-emerald: #34C98A;
+  --color-coral: #E8503A;
+  --text-primary: #0F1C3F;
+  --text-secondary: #4A5470;
+  --text-tertiary: rgba(15,28,63,0.40);
+  --text-on-dark: #EEF1F8;
+  --electric-dim: rgba(47,95,212,0.08);
+  --electric-border: rgba(47,95,212,0.20);
+  --emerald-dim: rgba(52,201,138,0.10);
+  --emerald-border: rgba(52,201,138,0.22);
+  --coral-dim: rgba(232,80,58,0.10);
+  --coral-border: rgba(232,80,58,0.22);
+  --sky-dim: rgba(107,155,245,0.10);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --max-width: 860px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-cloud);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── STICKY NAV ── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,28,63,0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(107,155,245,0.15);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  gap: 16px;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-brand span { color: var(--color-electric); }
+
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-links::-webkit-scrollbar { display: none; }
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(238,241,248,0.5);
+  text-decoration: none;
+  padding: 6px 12px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--color-sky); }
+
+/* ── HERO / COVER ── */
+.hero {
+  background: var(--color-midnight);
+  padding: clamp(48px, 8vw, 88px) var(--gutter) clamp(40px, 6vw, 64px);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(ellipse, rgba(47,95,212,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-sky);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-sky);
+  opacity: 0.5;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 900;
+  color: var(--text-on-dark);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 640px;
+  margin-bottom: 20px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--color-sky);
+}
+
+.hero-subtitle {
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: rgba(238,241,248,0.65);
+  line-height: 1.55;
+  max-width: 520px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  border-top: 1px solid rgba(107,155,245,0.2);
+  padding-top: 28px;
+}
+
+@media (min-width: 560px) {
+  .hero-stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+.hero-stat {
+  padding: 0 20px 0 0;
+}
+
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 700;
+  color: var(--color-sky);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(238,241,248,0.4);
+}
+
+.hero-tagline {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(107,155,245,0.12);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-quote {
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(238,241,248,0.55);
+  max-width: 480px;
+}
+
+.hero-date {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(238,241,248,0.3);
+  white-space: nowrap;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ── SECTIONS ── */
+.report-section {
+  padding: clamp(48px, 7vw, 80px) 0;
+  border-bottom: 1px solid var(--color-mist);
+}
+
+.report-section:last-of-type { border-bottom: none; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-electric);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-mist);
+}
+
+/* ── EYEBROW ── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-electric);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--color-electric);
+  opacity: 0.4;
+}
+
+/* ── HEADINGS ── */
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-size: 14.5px;
+}
+
+p:last-child { margin-bottom: 0; }
+
+/* ── CALLOUTS ── */
+.callout {
+  border-radius: 8px;
+  padding: 16px 20px;
+  border-left: 3px solid;
+  margin: 24px 0;
+}
+
+.callout-info { background: var(--sky-dim); border-color: var(--color-sky); }
+.callout-action { background: var(--electric-dim); border-color: var(--color-electric); }
+.callout-positive { background: var(--emerald-dim); border-color: var(--color-emerald); }
+.callout-negative { background: var(--coral-dim); border-color: var(--color-coral); }
+
+.callout-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.callout-info .callout-title { color: var(--color-sky); }
+.callout-action .callout-title { color: var(--color-electric); }
+.callout-positive .callout-title { color: var(--color-emerald); }
+.callout-negative .callout-title { color: var(--color-coral); }
+
+.callout-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  background: var(--color-midnight);
+  border-radius: 10px;
+  padding: clamp(20px, 4vw, 30px) clamp(20px, 4vw, 32px);
+  margin: 28px 0;
+}
+
+.pull-quote p {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 2.5vw, 18px);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: 1.4;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: var(--color-midnight);
+  border-radius: 10px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 28px 0;
+}
+
+@media (min-width: 560px) {
+  .stats-strip { grid-template-columns: repeat(4, 1fr); gap: 0; }
+}
+
+.strip-stat {
+  text-align: center;
+  padding: 0 12px;
+}
+
+@media (min-width: 560px) {
+  .strip-stat {
+    border-right: 1px solid rgba(107,155,245,0.15);
+  }
+  .strip-stat:last-child { border-right: none; }
+}
+
+.strip-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 700;
+  color: var(--color-sky);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.strip-stat-label {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(238,241,248,0.4);
+}
+
+/* ── DATA CARDS ── */
+.data-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+@media (min-width: 480px) {
+  .data-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 680px) {
+  .data-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.data-cards-2col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .data-cards-2col { grid-template-columns: repeat(2, 1fr); }
+}
+
+.score-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 18px;
+  border: 1px solid var(--color-mist);
+  box-shadow: 0 2px 8px rgba(15,28,63,0.05);
+}
+
+.score-card-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.score-card-value {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.score-card-value.electric { color: var(--color-electric); }
+.score-card-value.emerald { color: var(--color-emerald); }
+.score-card-value.coral { color: var(--color-coral); }
+.score-card-value.sky { color: var(--color-sky); }
+
+.score-card-sub {
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+
+.score-bar-track {
+  height: 4px;
+  background: var(--color-mist);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.fill-electric { background: var(--color-electric); }
+.fill-emerald { background: var(--color-emerald); }
+.fill-coral { background: var(--color-coral); }
+
+/* ── SIGNAL CARDS ── */
+.signal-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+@media (min-width: 520px) {
+  .signal-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 720px) {
+  .signal-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── TABLES ── */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(15,28,63,0.06);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 420px;
+}
+
+thead tr { background: var(--color-midnight); }
+
+thead th {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-dark);
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 500;
+}
+
+tbody tr:nth-child(odd) { background: var(--color-cloud); }
+tbody tr:nth-child(even) { background: #ffffff; }
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-mist);
+  color: var(--text-secondary);
+}
+
+tbody td.positive { color: var(--color-emerald); font-weight: 600; }
+tbody td.negative { color: var(--color-coral); font-weight: 600; }
+tbody td.neutral { color: var(--color-electric); font-weight: 600; }
+tbody td.strong { color: var(--text-primary); font-weight: 600; }
+
+/* ── TIER ROWS ── */
+.tier-row-elite td:first-child { color: var(--color-emerald); font-weight: 700; font-family: var(--font-mono); font-size: 11px; }
+.tier-row-strong td:first-child { color: var(--color-electric); font-weight: 700; font-family: var(--font-mono); font-size: 11px; }
+.tier-row-avg td:first-child { color: var(--text-secondary); font-weight: 700; font-family: var(--font-mono); font-size: 11px; }
+.tier-row-below td:first-child { color: var(--color-coral); font-weight: 700; font-family: var(--font-mono); font-size: 11px; }
+
+.city-character { font-size: 11.5px; color: var(--text-tertiary); font-style: italic; }
+
+/* ── TWO COL ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+@media (min-width: 640px) {
+  .two-col { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── GAP BLOCKS ── */
+.gap-block {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid var(--color-mist);
+  padding: 22px 24px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(15,28,63,0.04);
+}
+
+.gap-number {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-coral);
+  margin-bottom: 6px;
+}
+
+.gap-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.gap-block p {
+  font-size: 13.5px;
+  margin: 0;
+}
+
+/* ── ABOUT CARD ── */
+.about-card {
+  background: var(--color-midnight);
+  border-radius: 12px;
+  padding: clamp(24px, 5vw, 40px) clamp(24px, 5vw, 40px);
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 50%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(47,95,212,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.about-card h2 {
+  color: var(--text-on-dark);
+  font-size: clamp(20px, 3.5vw, 26px);
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.about-card p {
+  color: rgba(238,241,248,0.65);
+  font-size: 14px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.cta-url {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-sky);
+  letter-spacing: 0.08em;
+  position: relative;
+}
+
+/* ── SITE FOOTER ── */
+.site-footer {
+  background: var(--color-midnight);
+  padding: 24px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 0;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+}
+
+.footer-brand span { color: var(--color-electric); }
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(238,241,248,0.3);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── DARK SCORE CARD ── */
+.score-card-dark {
+  background: var(--color-midnight);
+  border-color: transparent;
+}
+
+.score-card-dark .score-card-label {
+  color: rgba(238,241,248,0.4);
+}
+
+.score-card-dark p {
+  color: rgba(238,241,248,0.7);
+  font-size: 12.5px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── ITALIC FOOTNOTE ── */
+.footnote {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+}
+
+/* ── RESPONSIVE HELPERS ── */
+@media (max-width: 400px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── STICKY NAV ── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Outer<span>Intel</span></div>
+    <ul class="nav-links">
+      <li><a href="#exec-summary">Summary</a></li>
+      <li><a href="#ai-opportunity">AI Search</a></li>
+      <li><a href="#benchmarks">Benchmarks</a></li>
+      <li><a href="#top-vs-bottom">Top vs. Bottom</a></li>
+      <li><a href="#what-ai-reads">What AI Reads</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#gaps">5 Gaps</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">2025 National Benchmark Report · Med Spa AI Visibility</div>
+    <h1 class="hero-title">The State of Med Spa <em>AI Visibility</em></h1>
+    <p class="hero-subtitle">What 21,489 reviews across 131 independent med spas reveal about who gets found — and who gets passed over.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">21,489</div>
+        <div class="hero-stat-label">Reviews Analyzed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">131</div>
+        <div class="hero-stat-label">Independent Med Spas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12</div>
+        <div class="hero-stat-label">US Cities</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Mar 2026</div>
+        <div class="hero-stat-label">Data Through</div>
+      </div>
+    </div>
+
+    <div class="hero-tagline">
+      <p class="hero-quote">"The race for AI visibility has already started. Most operators don't know they're in it."</p>
+      <div class="hero-date">OuterIntel.com · April 2026</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ── EXECUTIVE SUMMARY ── -->
+<section class="report-section reveal" id="exec-summary">
+  <div class="section-label">03 · Executive Summary</div>
+  <h2>The Operators Winning in AI Search Are <em style="font-style:italic;color:var(--color-electric)">Not</em> Who You'd Expect</h2>
+
+  <p>Med spa owners in every market are spending real money on Facebook and Instagram ads to drive awareness. The ads work. Prospects get interested and do what every consumer does next: they open Google to verify before committing. What they find in those thirty seconds — whether a rich, credible, well-managed review profile or a thin, stale one — determines whether they call. Most operators have no precise picture of what that verification moment looks like. This report measures it.</p>
+
+  <div class="stats-strip">
+    <div class="strip-stat">
+      <div class="strip-stat-num">69%</div>
+      <div class="strip-stat-label">Average 4.9+ Stars</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-stat-num">53.9pt</div>
+      <div class="strip-stat-label">Response Rate Gap</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-stat-num">220</div>
+      <div class="strip-stat-label">Review Volume Gap</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-stat-num">11</div>
+      <div class="strip-stat-label">Respond to 0% of Reviews</div>
+    </div>
+  </div>
+
+  <div class="callout callout-negative">
+    <div class="callout-title">Stars are table stakes, not a competitive advantage.</div>
+    <div class="callout-body">69% of the 131 businesses in this study average 4.9 stars or higher. The entire competitive field is compressed into a 0.3-point band at the top of a five-star scale. Any strategy built around improving a star rating is chasing a metric that has already hit its ceiling.</div>
+  </div>
+
+  <p>The gap between top and bottom performers is not a gap in customer experience or clinical quality. The top quartile and bottom quartile are nearly identical on star rating (4.93 vs. 4.87), sentiment (9.28 vs. 9.15), and review specificity. They are dramatically different on review volume (299 vs. 79) and response rate (92.2% vs. 38.3%).</p>
+
+  <div class="callout callout-action">
+    <div class="callout-title">The operators winning in AI search are not the ones with the best reviews.</div>
+    <div class="callout-body">They are the ones who have built the most disciplined review infrastructure. A business can score in the top 20 nationally on AI Visibility while its reputation is quietly deteriorating — the star rating masks what AI engines actually read.</div>
+  </div>
+</section>
+
+<!-- ── AI SEARCH OPPORTUNITY ── -->
+<section class="report-section reveal" id="ai-opportunity">
+  <div class="section-label">04 · The AI Search Opportunity</div>
+  <h2>The Verification Moment Has Changed. Most Operators Haven't.</h2>
+
+  <p>Five years ago the verification moment was simple: a prospect searched Google, saw a list of businesses with star ratings, and chose the one with the most reviews or the highest rating. Today the process is more sophisticated.</p>
+
+  <p>When a prospect searches for a med spa in their city, they encounter AI-generated summaries alongside traditional listings. Google's AI Overviews synthesize information across a business's review profile to produce a narrative description: what services the business offers, what patients consistently say, whether staff is praised by name, and whether there are recurring concerns. The prospect receives a constructed portrait — not just a star rating.</p>
+
+  <div class="callout callout-info">
+    <div class="callout-title">97% of consumers research services online before booking.</div>
+    <div class="callout-body">BrightLocal, 2025. The ad creates intent. The review profile either captures it or surrenders it to a better-positioned competitor.</div>
+  </div>
+
+  <h3 style="margin-top:28px;margin-bottom:16px;">The Five Signals AI Systems Weigh</h3>
+
+  <div class="signal-cards">
+    <div class="score-card">
+      <div class="score-card-label">Signal 01</div>
+      <div class="score-card-value electric" style="font-size:19px;margin-bottom:8px;">Volume &amp; Freshness</div>
+      <p style="font-size:12.5px;margin:0;">Total reviews + recency establish credibility. A large count that has gone quiet reads differently than a steady ongoing stream.</p>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Signal 02</div>
+      <div class="score-card-value electric" style="font-size:19px;margin-bottom:8px;">Velocity</div>
+      <p style="font-size:12.5px;margin:0;">AI systems favor businesses generating new reviews consistently, not large historical counts that have stopped growing.</p>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Signal 03</div>
+      <div class="score-card-value electric" style="font-size:19px;margin-bottom:8px;">Owner Responses</div>
+      <p style="font-size:12.5px;margin:0;">Responses are indexed content that AI systems read and weigh. They function as a freshness and engagement signal.</p>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Signal 04</div>
+      <div class="score-card-value electric" style="font-size:19px;margin-bottom:8px;">Review Content</div>
+      <p style="font-size:12.5px;margin:0;">The actual language customers use matters. Generic praise and specific outcomes are not equivalent to an AI system.</p>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Signal 05</div>
+      <div class="score-card-value electric" style="font-size:19px;margin-bottom:8px;">Platform Consistency</div>
+      <p style="font-size:12.5px;margin:0;">Consistency of signals across platforms matters. Google accounts for the majority of discovery search and AI Overview sourcing.</p>
+    </div>
+    <div class="score-card score-card-dark" style="background:var(--color-midnight);border-color:transparent;">
+      <div class="score-card-label" style="color:rgba(238,241,248,0.4);">The Bottom Line</div>
+      <p style="font-size:12.5px;color:rgba(238,241,248,0.75);margin:0;line-height:1.55;">A practice spending $2,000/month on Meta ads with an unmanaged review profile is driving warm prospects directly to better-positioned competitors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── NATIONAL BENCHMARKS ── -->
+<section class="report-section reveal" id="benchmarks">
+  <div class="section-label">06 · National Benchmarks</div>
+  <h2>What the Competitive Field Actually Looks Like in 2026</h2>
+
+  <p>These numbers define the baseline every operator is competing against, whether they know it or not.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="eyebrow">Review Volume</div>
+      <div class="data-cards" style="grid-template-columns:1fr;gap:10px;">
+        <div class="score-card">
+          <div class="score-card-label">National Median</div>
+          <div class="score-card-value electric">120</div>
+          <div class="score-card-sub">reviews over 36 months</div>
+          <div class="score-bar-track"><div class="score-bar-fill fill-electric" style="width:38%"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">Top Quartile Threshold</div>
+          <div class="score-card-value emerald">230+</div>
+          <div class="score-card-sub">reviews needed to reach top 25%</div>
+          <div class="score-bar-track"><div class="score-bar-fill fill-emerald" style="width:72%"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">Top 10% Threshold</div>
+          <div class="score-card-value emerald">320+</div>
+          <div class="score-card-sub">reviews to reach top 10% nationally</div>
+          <div class="score-bar-track"><div class="score-bar-fill fill-emerald" style="width:88%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Review Velocity</div>
+      <div class="data-cards" style="grid-template-columns:1fr;gap:10px;">
+        <div class="score-card">
+          <div class="score-card-label">National Median</div>
+          <div class="score-card-value electric">4.15</div>
+          <div class="score-card-sub">new reviews per month</div>
+          <div class="score-bar-track"><div class="score-bar-fill fill-electric" style="width:40%"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">Top Quartile</div>
+          <div class="score-card-value emerald">7.1+</div>
+          <div class="score-card-sub">reviews per month</div>
+          <div class="score-bar-track"><div class="score-bar-fill fill-emerald" style="width:68%"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">National Velocity Leader</div>
+          <div class="score-card-value emerald">57.2</div>
+          <div class="score-card-sub">Look Lab Med Spa, Denver — 13.8× national median</div>
+          <div class="score-bar-track"><div class="score-bar-fill fill-emerald" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="eyebrow">AI Visibility Score Tiers</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Score Range</th>
+            <th>Businesses</th>
+            <th>Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tier-row-elite">
+            <td>Elite</td>
+            <td>80–100</td>
+            <td class="positive">31</td>
+            <td class="positive">24%</td>
+          </tr>
+          <tr class="tier-row-strong">
+            <td>Strong</td>
+            <td>65–79</td>
+            <td class="neutral">52</td>
+            <td class="neutral">40%</td>
+          </tr>
+          <tr class="tier-row-avg">
+            <td>Average</td>
+            <td>50–64</td>
+            <td>38</td>
+            <td>29%</td>
+          </tr>
+          <tr class="tier-row-below">
+            <td>Below Average</td>
+            <td>35–49</td>
+            <td class="negative">10</td>
+            <td class="negative">8%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout callout-negative">
+    <div class="callout-title">If your business has fewer than 120 reviews in the last three years, you are below the national median.</div>
+    <div class="callout-body">And significantly behind the businesses AI engines surface first. A 4.9 star average used to signal excellence. Today it signals you are operating in the same band as nearly everyone else.</div>
+  </div>
+</section>
+
+<!-- ── TOP VS BOTTOM ── -->
+<section class="report-section reveal" id="top-vs-bottom">
+  <div class="section-label">07 · What Separates Top Performers from the Rest</div>
+  <h2>Quality Doesn't Explain the Gap. <em style="font-style:italic;color:var(--color-electric)">Operations Do.</em></h2>
+
+  <p>The data that most directly answers the question of what separates visible practices from invisible ones fits in a single table. Top quartile (score 79.0 and above) vs. bottom quartile (60.3 and below).</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Top Quartile</th>
+          <th>Bottom Quartile</th>
+          <th>Gap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="strong">Avg Response Rate</td>
+          <td class="positive">92.2%</td>
+          <td class="negative">38.3%</td>
+          <td class="negative">53.9 pts</td>
+        </tr>
+        <tr>
+          <td class="strong">Avg Review Volume</td>
+          <td class="positive">299</td>
+          <td class="negative">79</td>
+          <td class="negative">220 reviews</td>
+        </tr>
+        <tr>
+          <td class="strong">Avg Velocity</td>
+          <td class="positive">9.82 / mo</td>
+          <td class="negative">2.38 / mo</td>
+          <td class="negative">7.44 / mo</td>
+        </tr>
+        <tr>
+          <td class="strong">Avg Star Rating</td>
+          <td>4.93</td>
+          <td>4.87</td>
+          <td style="color:var(--text-tertiary);">0.06 stars</td>
+        </tr>
+        <tr>
+          <td class="strong">Avg Sentiment Score</td>
+          <td>9.28</td>
+          <td>9.15</td>
+          <td style="color:var(--text-tertiary);">0.13 pts</td>
+        </tr>
+        <tr>
+          <td class="strong">Avg Specificity Score</td>
+          <td>1.501</td>
+          <td>1.517</td>
+          <td style="color:var(--text-tertiary);">~0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Zero businesses in the top quartile respond to 0% of their reviews. Seven businesses in the bottom quartile do."</p>
+  </div>
+
+  <p>The rating gap between the most and least visible businesses in this study is 0.06 stars. On every dimension that reflects actual quality of the patient experience, the top and bottom quartiles are nearly indistinguishable. On every dimension that reflects operational discipline, they are dramatically different.</p>
+
+  <div class="callout callout-negative">
+    <div class="callout-title">An operator who believes their visibility problem is a quality problem is solving the wrong problem.</div>
+    <div class="callout-body">The data shows clearly that quality signals (rating, sentiment, specificity) contribute almost nothing to the gap between top and bottom performers. Process signals do. The businesses at the top are not better practices — they are more operationally present ones.</div>
+  </div>
+</section>
+
+<!-- ── WHAT AI READS ── -->
+<section class="report-section reveal" id="what-ai-reads">
+  <div class="section-label">08 · What AI Engines Actually Read in Your Reviews</div>
+  <h2>Below the Star Rating Is Where <em style="font-style:italic;color:var(--color-electric)">AI Actually Operates</em></h2>
+
+  <p>AI search engines read the actual language customers use, identify the services and practitioners mentioned by name, and build a composite picture of what a business is known for. Understanding what that picture looks like is the second major output of this study.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="eyebrow">Services in Reviews</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Service</th><th>% of Businesses</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Botox</td><td class="positive">95%</td></tr>
+            <tr><td>Lip Filler</td><td class="positive">83%</td></tr>
+            <tr><td>Microneedling</td><td class="neutral">83%</td></tr>
+            <tr><td>Chemical Peels</td><td class="neutral">50%+</td></tr>
+            <tr><td>Dysport</td><td class="neutral">50%+</td></tr>
+            <tr><td>HydraFacial</td><td class="neutral">50%+</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Top Positive Language (National)</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Term</th><th>Businesses</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"Knowledgeable"</td><td class="positive">85 of 131</td></tr>
+            <tr><td>"Warm / Welcoming"</td><td class="positive">70 of 131</td></tr>
+            <tr><td>"Natural-looking results"</td><td class="neutral">53 of 131</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-positive" style="margin-top:14px;">
+        <div class="callout-title">The average med spa has 9.1 named staff members in its reviews.</div>
+        <div class="callout-body">Every named practitioner is a potential entry point when someone asks AI which injector is best for lip filler in their city. Staff-attributed reviews are an asset volume alone cannot replicate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:32px;">Review Specificity — The Forward Signal</div>
+  <div class="data-cards">
+    <div class="score-card">
+      <div class="score-card-label">Name a Staff Member</div>
+      <div class="score-card-value electric">65%</div>
+      <div class="score-card-sub">of reviews contain a first name</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Name a Specific Service</div>
+      <div class="score-card-value electric">38.7%</div>
+      <div class="score-card-sub">mention a service by name</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Describe a Concrete Outcome</div>
+      <div class="score-card-value coral">29.4%</div>
+      <div class="score-card-sub">"no bruising," "looked completely natural"</div>
+    </div>
+  </div>
+
+  <p class="footnote">"Great place, loved the staff" does not answer "who does the best microneedling in Nashville?" A review that names the practitioner, the treatment, and the result does.</p>
+</section>
+
+<!-- ── MARKET SNAPSHOT ── -->
+<section class="report-section reveal" id="markets">
+  <div class="section-label">09 · Market-by-Market Snapshot</div>
+  <h2>No Two Markets Behave <em style="font-style:italic;color:var(--color-electric)">the Same Way</em></h2>
+
+  <p>The national picture tells one story. The city-level data tells twelve more specific ones.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Top Score</th>
+          <th>Spread</th>
+          <th>Median Score</th>
+          <th>Market Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="strong">Boston</td>
+          <td class="positive">85.8</td>
+          <td>39.6 pts</td>
+          <td class="positive">73.1</td>
+          <td class="city-character">Highest median — best all-around</td>
+        </tr>
+        <tr>
+          <td class="strong">Denver</td>
+          <td class="positive">86.3</td>
+          <td>30.0 pts</td>
+          <td class="positive">72.8</td>
+          <td class="city-character">Volume leader — response discipline gap</td>
+        </tr>
+        <tr>
+          <td class="strong">Nashville</td>
+          <td class="positive">89.3</td>
+          <td>28.8 pts</td>
+          <td class="positive">72.1</td>
+          <td class="city-character">Most competitive — tight field, high floor</td>
+        </tr>
+        <tr>
+          <td class="strong">Atlanta</td>
+          <td class="positive">88.6</td>
+          <td>36.4 pts</td>
+          <td class="positive">72.1</td>
+          <td class="city-character">Balanced — strong response culture</td>
+        </tr>
+        <tr>
+          <td class="strong">Kansas City</td>
+          <td class="positive">86.0</td>
+          <td>48.4 pts</td>
+          <td class="neutral">71.5</td>
+          <td class="city-character">Extreme gap market — bifurcated</td>
+        </tr>
+        <tr>
+          <td class="strong">Dallas</td>
+          <td class="positive">88.3</td>
+          <td>43.2 pts</td>
+          <td class="neutral">70.8</td>
+          <td class="city-character">Wide range — concentrated leaders, long tail</td>
+        </tr>
+        <tr>
+          <td class="strong">Seattle</td>
+          <td class="positive">94.3</td>
+          <td>50.2 pts</td>
+          <td class="neutral">70.2</td>
+          <td class="city-character">Polarized — city-relative scoring amplifies leader</td>
+        </tr>
+        <tr>
+          <td class="strong">San Diego</td>
+          <td class="positive">93.8</td>
+          <td>48.9 pts</td>
+          <td class="neutral">70.0</td>
+          <td class="city-character">Polarized — strong leader, weak tail</td>
+        </tr>
+        <tr>
+          <td class="strong">Chicago</td>
+          <td class="positive">89.1</td>
+          <td>39.7 pts</td>
+          <td class="neutral">68.4</td>
+          <td class="city-character">Bimodal — 4.7% negative review rate (2× national)</td>
+        </tr>
+        <tr>
+          <td class="strong">Charlotte</td>
+          <td>83.9</td>
+          <td>40.9 pts</td>
+          <td>65.4</td>
+          <td class="city-character">Fast-growing — review practices still developing</td>
+        </tr>
+        <tr>
+          <td class="strong">Minneapolis</td>
+          <td>87.4</td>
+          <td>33.9 pts</td>
+          <td class="negative">63.2</td>
+          <td class="city-character">Second-lowest median — significant response gap</td>
+        </tr>
+        <tr>
+          <td class="strong">Scottsdale</td>
+          <td class="positive">89.9</td>
+          <td>36.0 pts</td>
+          <td class="negative">63.8</td>
+          <td class="city-character">High volume, low discipline — last in median score</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-title">The Scottsdale Lesson</div>
+    <div class="callout-body">Scottsdale ranks last in median AI Visibility Score despite having the second-highest median review volume nationally at 205 reviews. Several operators have accumulated large review counts but have response rates at or near zero. High volume with low discipline is Scottsdale's defining pattern — and a cautionary example for every market.</div>
+  </div>
+</section>
+
+<!-- ── THE 5 GAPS ── -->
+<section class="report-section reveal" id="gaps">
+  <div class="section-label">10 · The 5 Gaps Most Operators Are Leaving Open</div>
+  <h2>The Same Gaps Appear Across <em style="font-style:italic;color:var(--color-coral)">Every Market</em></h2>
+
+  <p>Every market in this study contains businesses with strong clinical reputations and weak AI visibility. In most cases the reason is not mysterious.</p>
+
+  <div style="margin-top:24px;">
+    <div class="gap-block">
+      <div class="gap-number">Gap 01 · Velocity</div>
+      <div class="gap-title">No Systematic Review Collection Process</div>
+      <p>Reviews arrive when patients remember to leave them — at a fraction of what a deliberate system produces. The top quartile earns 9.82 reviews/month. The bottom quartile earns 2.38. That gap compounds to nearly 90 additional reviews per year. The practices at 1–2 reviews per month are not just behind today. They are receding.</p>
+    </div>
+
+    <div class="gap-block">
+      <div class="gap-number">Gap 02 · Response</div>
+      <div class="gap-title">20% of Businesses Respond to Fewer Than 10% of Reviews</div>
+      <p>Owner responses are indexed content. Every response adds the operator's voice, contributes keyword context, and signals to AI systems that the business is actively managed. A business not responding is handing its entire narrative to its customers and leaving indexed content on the table.</p>
+    </div>
+
+    <div class="gap-block">
+      <div class="gap-number">Gap 03 · Negative Review Response</div>
+      <div class="gap-title">16 Businesses Respond to 0% of Negative Reviews</div>
+      <p>A one-star review with no owner response sits in the public record indefinitely. It does not disappear because the business ignores it. It compounds, particularly if the complaint pattern recurs. The absence of a response is itself a signal — and not a positive one.</p>
+    </div>
+
+    <div class="gap-block">
+      <div class="gap-number">Gap 04 · Specificity</div>
+      <div class="gap-title">Only 38.7% of Reviews Name a Specific Service</div>
+      <p>Only 29.4% describe a concrete outcome. Operators who coach patients toward specific, service-naming, outcome-describing reviews build content that functions as genuine AI signal. This gap will widen as AI search systems mature.</p>
+    </div>
+
+    <div class="gap-block" style="border-color:var(--coral-border);background:var(--coral-dim);">
+      <div class="gap-number">Gap 05 · Visibility</div>
+      <div class="gap-title" style="color:var(--color-coral);">Operating Without Competitive Intelligence</div>
+      <p>Almost no operator has a structured, data-driven picture of where they rank on velocity, response rate, content quality, and AI sentiment relative to the top businesses in their market. Without knowing where you stand, it is difficult to prioritize what to fix, impossible to measure whether interventions are working, and easy to believe a 4.9 rating means everything is fine. <strong>You cannot close gaps you cannot see.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="report-section reveal" id="about">
+  <div class="section-label">11 · About Outer Intel</div>
+  <h2>What Patients Say When <em style="font-style:italic;color:var(--color-electric)">You're Not in the Room</em></h2>
+
+  <p>Outer Intel delivers competitive reputation intelligence for independent med spas. Our audit reports give practice owners and managers a clear, data-driven picture of how their review profile compares to the top performers in their market.</p>
+
+  <div class="about-card">
+    <h2>The Audit Is Where the National Data Becomes Specific to You</h2>
+    <p>The findings in this report are the national context. The audit is where those findings become specific to your business, your city, and your closest competitors — across review volume, velocity, response rate, content quality, and AI Visibility Score, along with specific, prioritized recommendations for closing the gaps.</p>
+    <div class="cta-url">OuterIntel.com</div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <div class="section-label">12 · Methodology Summary</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Parameter</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="strong">Data Source</td><td>Google Business Profile via Outscraper API</td></tr>
+          <tr><td class="strong">Collection Window</td><td>36 months — April 2023 through March 2026</td></tr>
+          <tr><td class="strong">Total Reviews</td><td class="positive">21,489 (after deduplication and language filtering)</td></tr>
+          <tr><td class="strong">Businesses</td><td>131 independent med spas across 12 US cities</td></tr>
+          <tr><td class="strong">Exclusions</td><td>National chains, franchises; minimum 20-review threshold</td></tr>
+          <tr><td class="strong">Sentiment Analysis</td><td>Claude claude-sonnet-4-6 — batched per business, 75K char cap</td></tr>
+          <tr><td class="strong">Volume / Velocity Scoring</td><td>City-relative percentile ranks (not national), normalized 0–1</td></tr>
+          <tr><td class="strong">AI Visibility Score</td><td>Composite of 6 weighted components — see full appendix</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:16px;">
+      <div class="callout-title">Verification Note</div>
+      <div class="callout-body">Eleven findings from the initial analysis were independently verified against source files before publication. Three were revised as a result: the Look Lab velocity multiple (13.8×, not 14×), the staff mention percentage (65% conservative), and the microneedling figure (74% by exact keyword, 83% including synonym recognition).</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-brand">Outer<span>Intel</span></div>
+  <div class="footer-meta">131 businesses · 12 cities · 21,489 reviews · Data as of March 2026 · Published April 2026</div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// Active nav highlight
+const sections = document.querySelectorAll('.report-section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.style.color = '');
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) active.style.color = 'var(--color-sky)';
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => navObserver.observe(s));
+</script>
+
+</body>
+</html>
